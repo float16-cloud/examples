@@ -1,5 +1,5 @@
 def hello_world():
-    return "I'm running in a remote container"
+    return "Hello World! Welcome to Float16 Serverless GPU."
 
 
 print(hello_world())
