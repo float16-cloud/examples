@@ -18,7 +18,7 @@ We welcome contributions to this repository. If you have an example you would li
     `README.md` template:
     
     ```
-    # Example Name
+    # Example Name (Dev mode or Prod mode)
 
     ## Description (Must have)
 
@@ -46,10 +46,9 @@ We welcome contributions to this repository. If you have an example you would li
     - Latency
     - Throughput
 
-    ## Your profile (Optional)
+    ## Profile (Optional)
 
     - Social media links
     - Personal website
     - Open for Work
-
     ```
