@@ -1,4 +1,4 @@
-# FastAPI Hello World
+# FastAPI Hello World (Production mode, Deploy mode)
 
 ## Getting Started
 
@@ -9,12 +9,16 @@ float16 deploy app.py
 
 Function mode : Best for simple, stateless, and short-lived functions.
 ```
-curl -X GET https://api.float16.cloud/task/run/function/<your_function_endpoint> -h "Content-Type: application/json" -h "Authorization Bearer <endpoint_token>"
+curl -X GET https://api.float16.cloud/task/run/function/<your_function_endpoint> \
+-h "Content-Type: application/json" \
+-h "Authorization Bearer <endpoint_token>"
 ```
 
 Server mode : Best for low latency, high throughput and cost-effective.
 ```
-curl -X GET https://api.float16.cloud/task/run/server/<your_function_endpoint> -h "Content-Type: application/json" -h "Authorization Bearer <endpoint_token>"
+curl -X GET https://api.float16.cloud/task/run/server/<your_function_endpoint> \
+-h "Content-Type: application/json" \
+-h "Authorization Bearer <endpoint_token>"
 ```
 
 ## Description
