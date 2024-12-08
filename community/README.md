@@ -18,10 +18,9 @@ We welcome contributions to this repository. If you have an example you would li
     `README.md` template:
     
     ```
-
     # Example Name
 
-    ## Description (Must)
+    ## Description (Must have)
 
     A brief description of the example.
 
@@ -31,17 +30,17 @@ We welcome contributions to this repository. If you have an example you would li
 
     Diagrams are encouraged.
 
-    ## Libraries (Must)
+    ## Libraries (Must have)
 
     - Library 1
     - Library 2
     - Library 3
 
-    ## GPU Configuration (Must)
+    ## GPU Configuration (Must have)
 
     - H100, L40s, L4 or etc.
 
-    ## Expected Performance (Must)
+    ## Expected Performance (Must have)
 
     - Performance
     - Latency
@@ -51,5 +50,6 @@ We welcome contributions to this repository. If you have an example you would li
 
     - Social media links
     - Personal website
+    - Open for Work
 
     ```

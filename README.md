@@ -2,9 +2,11 @@
 
 This repository contains a collection of examples that demonstrate how to use the Float16 Serverless platform.
 
-This repository is a work in progress. We will be adding more examples over time. If you have a specific example you would like to see, please open an issue.
+This repository is a work in progress. We will be adding more examples over time. 
 
-[Float16.cloud](https://float16.cloud)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Float16 CLI (NPM)](https://www.npmjs.com/package/@float16/cli)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Documentation](https://docs.float16.cloud)&nbsp;&nbsp;&nbsp;
+If you have a specific example you would like to see, please open an issue.
+
+[Float16.cloud](https://float16.cloud)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Float16 CLI (NPM)](https://www.npmjs.com/package/@float16/cli)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Documentation](https://docs.float16.cloud)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Discord](https://discord.com/invite/j2DVTMjr67)&nbsp;&nbsp;&nbsp;
 
 
 ## Table of Contents
@@ -13,7 +15,6 @@ This repository is a work in progress. We will be adding more examples over time
 - [Latest Examples](#latest-examples)
 - [Getting Started](#getting-started)
 - [Examples](#examples)
-- [Highlights](#highlights)
 - [Contribution Guidelines](#contribution-guidelines)
 
 ## Latest News
@@ -22,7 +23,7 @@ This repository is a work in progress. We will be adding more examples over time
 
 ## Latest Examples
 
-- **2024-12-09**: Added FastAPI Serving and Helloworld example.
+- **2024-12-09**: Added [FastAPI Serving](./fastapi_helloworld) and [Helloworld](./helloWorld/) example.
 
 ## Getting Started
 
@@ -44,12 +45,6 @@ float16 example list
 float16 example helloworld
 ```
 
-## Highlights
-
-Deploy a simple FastAPI application using Float16 Serverless platform.
-
-[FastAPI Serving](./fastapi_helloworld)
-
 ## Contribution Guidelines
 
 We welcome contributions to this repository. If you have an example you would like to add, please open a pull request.
@@ -70,10 +65,9 @@ We welcome contributions to this repository. If you have an example you would li
     `README.md` template:
     
     ```
-
     # Example Name
 
-    ## Description (Must)
+    ## Description (Must have)
 
     A brief description of the example.
 
@@ -83,17 +77,17 @@ We welcome contributions to this repository. If you have an example you would li
 
     Diagrams are encouraged.
 
-    ## Libraries (Must)
+    ## Libraries (Must have)
 
     - Library 1
     - Library 2
     - Library 3
 
-    ## GPU Configuration (Must)
+    ## GPU Configuration (Must have)
 
     - H100, L40s, L4 or etc.
 
-    ## Expected Performance (Must)
+    ## Expected Performance (Must have)
 
     - Performance
     - Latency
@@ -103,5 +97,8 @@ We welcome contributions to this repository. If you have an example you would li
 
     - Social media links
     - Personal website
-
+    - Open for Work
+    
     ```
+5. Open a pull request
+6. We will review your example and merge it into the repository
