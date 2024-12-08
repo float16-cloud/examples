@@ -118,7 +118,7 @@ We welcome contributions to this repository. If you have an example you would li
     - Latency
     - Throughput
 
-    ## Your profile (Optional)
+    ## Profile (Optional)
 
     - Social media links
     - Personal website

@@ -46,7 +46,7 @@ This is a simple script example that print "Hello World! Welcome to Float16 Serv
 
 - Return "Hello World" in less than 500 ms
 
-## Your Profile
+## Profile
 
 - [X - Matichon](https://x.com/KMatiDev1)
 - [Matichon - Personal website](https://matichon.me)
