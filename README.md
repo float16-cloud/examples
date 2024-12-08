@@ -16,6 +16,8 @@ If you have a specific example you would like to see, please open an issue.
 - [Getting Started](#getting-started)
 - [Examples](#examples)
 - [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
+- [Contact us](#contact-us)
 
 ## Latest News
 
@@ -102,3 +104,15 @@ We welcome contributions to this repository. If you have an example you would li
     ```
 5. Open a pull request
 6. We will review your example and merge it into the repository
+
+## License
+
+This repository is licensed under the Apache License 2.0. See [LICENSE](./LICENSE) for more information.
+
+## Contact us 
+
+If you have any questions, please reach out to us on Discord or email us at
+
+- X : [X](https://x.com/float16cloud)
+- Discord: [Discord](https://discord.com/invite/j2DVTMjr67)
+- Email: matichon[dot]man[at]float16[dot]cloud
