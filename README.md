@@ -29,21 +29,44 @@ If you have a specific example you would like to see, please open an issue.
 
 ## Getting Started
 
+1. Install the Float16 CLI via NPM.
+
 ```
 npm install -g @float16/cli 
 ```
 
-## Examples
+2. Login to your Float16 account.
 
 ```
-float16 example <example_dir>
+float16 login --token <your_token>
 ```
+
+3. Start using the Float16 CLI with the examples.
+
+```
+float16 example <example_name>
+```
+
+4. Run the example.
+
+```
+float16 run app.py
+```
+
+## Examples
+
+### List all examples
+List all examples available in the repository.
 
 ```
 float16 example list
 ```
 
+### Clone an example
+
 ```
+float16 example <example_dir>
+
 float16 example helloworld
 ```
 
