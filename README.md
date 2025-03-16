@@ -21,11 +21,13 @@ If you have a specific example you would like to see, please open an issue.
 
 ## Latest News
 
+- **2025-03-16**: Added `Huggingface-gemma-3-27b-it ` example.
 - **2025-03-13**: Move `FastAPI Serving` and `Helloworld` examples to official repository.
 - **2024-12-09**: Initial release of the Float16 Serverless Examples repository.
 
 ## Latest Examples
 
+- **2025-03-16**: Added [Huggingface-gemma-3-27b-it](./official/spot/huggingface-gemma-3-27b-it/) example.
 - **2025-03-13**: Added [FastAPI Dynamic Batching Typhoon2 8B](./official/deploy/fastapi-dynamic-batching-typhoon2-8b/) example.
 - **2025-03-13**: Added [FastAPI Typhoon2 8B](./official/deploy/fastapi-typhoon2-8b-llamacpp) example.
 - **2025-03-13**: Added [Torch-train-and-infernce-mnist](./official/spot/torch-train-and-infernce-mnist) example.
