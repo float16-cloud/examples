@@ -128,6 +128,6 @@ def train(model, train_loader, test_loader, num_epochs, save_interval):
     torch.save(model.state_dict(), 'mnist_model.pth')
     print("Training completed. Final model saved.")
 
-data_path = "../datasets/mnist-datasets"  # Make sure this matches the path in download_mnist.py
+data_path = "../../datasets/mnist-datasets"  # Make sure this matches the path in download_mnist.py
 train_loader, test_loader = load_data(data_path)
 train(model, train_loader, test_loader, num_epochs, save_interval)
