@@ -46,7 +46,7 @@ async def read_root(message_request : ModelParamsOpenAI):
 
     output = llm.create_chat_completion(
         messages = formatted_messages,
-        # response_format={ Uncomment this to use the json object format
+        # response_format={ ## Uncomment this to use the json object format
         #     "type": "json_object",
         # },
         max_tokens=256,
