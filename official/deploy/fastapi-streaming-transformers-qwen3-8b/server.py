@@ -8,10 +8,10 @@ from pydantic import BaseModel
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import uvicorn
-from typing import List, Optional
+from typing import Iterator, List, Optional
 
 start_load = time.time()
-model_name = "../weight-llm/Qwen3-8B"
+model_name = "../Qwen3-8B"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -41,8 +41,6 @@ def process_llm(message,max_token):
         enable_thinking=False
     )
     model_inputs = tokenizer.encode(_text_tokenized, return_tensors="pt").to(model.device)
-    original_inputs = tokenizer.encode(_text_tokenized, return_tensors="pt").to(model.device)
-
     count_token = 0
     start = time.time()
     sum_text = ""
@@ -51,6 +49,7 @@ def process_llm(message,max_token):
     recent_text_len = len(_text_tokenized)
     max_buffer_size = 5
     current_text_len = 0
+    first_trigger = True
     print(_text_tokenized)
     print(len(_text_tokenized))
 
@@ -96,22 +95,59 @@ def process_llm(message,max_token):
             recent_text_len = current_text_len
             print(f"Buffer text: {decoded_token}")
             sum_text += decoded_token
-            response = {
-                "id": 1,
-                "object": "chat.completion.chunk",
-                "created": int(time.time()),
-                "model": model_name,
-                "choices": [
-                    {
-                        "delta": {
-                            "role": 'assistant',
-                            "content": decoded_token
-                        },
-                        "index": 0,
-                        "finish_reason": None
-                    }
-                ]
-            }
+
+            if first_trigger :
+                first_trigger = False
+                response = {
+                    "id": "completion-1",
+                    "model": model_name,
+                    "created": int(time.time()),
+                    "object": "chat.completion.chunk",
+                    "choices": [
+                        {
+                            "delta": {
+                                "role": 'assistant',
+                            },
+                            "index": 0,
+                            "finish_reason": None
+                        }
+                    ]
+                }
+                yield f"data: {json.dumps(response)}\n"
+                
+                response = {
+                    "id": "completion-1",
+                    "model": model_name,
+                    "created": int(time.time()),
+                    "object": "chat.completion.chunk",
+                    "choices": [
+                        {
+                            "delta": {
+                                "content": decoded_token
+                            },
+                            "index": 0,
+                            "finish_reason": None
+                        }
+                    ]
+                }
+                yield f"data: {json.dumps(response)}\n"
+
+            else : 
+                response = {
+                    "id": "completion-1",
+                    "model": model_name,
+                    "created": int(time.time()),
+                    "object": "chat.completion.chunk",
+                    "choices": [
+                        {
+                            "delta": {
+                                "content": decoded_token
+                            },
+                            "index": 0,
+                            "finish_reason": None
+                        }
+                    ]
+                }
             yield f"data: {json.dumps(response)}\n"
     
 
@@ -119,14 +155,13 @@ def process_llm(message,max_token):
         final_text = "".join(buffer_text)
         sum_text += final_text
         response = {
-                "id": 1,
-                "object": "chat.completion.chunk",
-                "created": int(time.time()),
+                "id": "completion-1",
                 "model": model_name,
+                "created": int(time.time()),
+                "object": "chat.completion.chunk",
                 "choices": [
                     {
                         "delta": {
-                            "role": 'assistant',
                             "content": final_text
                         },
                         "index": 0,
@@ -142,7 +177,7 @@ def process_llm(message,max_token):
     print(f"Average token per sec: {count_token / (time.time() - start)} seconds")
     yield "data: [DONE]\n\n"
 
-@app.post("/chat")
+@app.post("/chat/completions")
 async def chat(text_request: ModelParamsOpenAI):
     return StreamingResponse(process_llm(text_request.messages,text_request.max_token), media_type="text/event-stream")
 
