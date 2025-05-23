@@ -1,0 +1,20 @@
+# Dependencies for server_multimodal.py (Qwen2.5-VL with Hugging Face Transformers)
+# Note: Install transformers from git for latest Qwen2.5-VL support as per model card
+git+https://github.com/huggingface/transformers
+torch
+accelerate
+fastapi
+uvicorn[standard]
+qwen-vl-utils[decord]==0.0.8
+pydantic
+python-multipart
+sentencepiece
+pillow
+
+# Dependencies for server_exllamav2.py (Qwen with exllamav2)
+exllamav2
+ninja # Often required for exllamav2 extension compilation
+# PyTorch: exllamav2 is sensitive to PyTorch version. 
+# Please ensure you have a compatible version of PyTorch installed (e.g., PyTorch 2.1+).
+# Refer to exllamav2 documentation for specific version requirements based on your CUDA version.
+# fastapi, uvicorn[standard], pydantic are already listed above.
