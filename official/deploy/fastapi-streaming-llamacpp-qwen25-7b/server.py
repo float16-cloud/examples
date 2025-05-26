@@ -26,6 +26,17 @@ class MessageInput(BaseModel):
 
 class ModelParamsOpenAI(BaseModel):
     messages: Optional[List[MessageInput]] = None
+    model: Optional[str] = None
+    stream: Optional[bool] = False
+    max_tokens: Optional[int] = 1024
+    repetition_penalty: Optional[float] = 1.0
+    end_id: Optional[int] = 2
+    top_p: Optional[float] = 0.75
+    top_k: Optional[int] = 40
+    temperature: Optional[float] = 0.7
+    stop: Optional[List[str]] = ["<bos>"]
+    random_seed: Optional[int] = 2
+    return_logs_prob: Optional[bool] = False
 
 def format_messages(messages: List[MessageInput]) -> List[dict]:
     return [{"role": message.role, "content": message.content} for message in messages]
@@ -49,7 +60,7 @@ async def read_root(message_request : ModelParamsOpenAI):
         # response_format={ ## Uncomment this to use the json object format
         #     "type": "json_object",
         # },
-        max_tokens=256,
+        max_tokens=message_request.max_tokens,
         stream=True
     )
 

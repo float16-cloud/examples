@@ -18,7 +18,7 @@ We welcome contributions to this repository. If you have an example you would li
     `README.md` template:
     
     ```
-    # Example Name (Dev mode or Prod mode)
+    # Example Name (Deploy mode, Run mode or Spot mode)
 
     ## Description (Must have)
 
