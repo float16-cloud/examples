@@ -21,7 +21,7 @@ This example demonstrates how to do batch inference a typhoon-ocr-7b model using
 
 ## Libraries 
 
-- None
+- typhoon-ocr
 
 ## GPU Configuration
 
