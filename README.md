@@ -20,6 +20,8 @@ If you have a specific example you would like to see, please open an issue.
 - [Contact us](#contact-us)
 
 ## Latest News
+- **2025-05-26**: Added `vllm-offline-inference-typhoon-ocr-7b` example.
+- **2025-04-29**: Added `fastapi-streaming-transformers-qwen3-8b` example.
 - **2025-04-11**: Added `fastapi-streaming-llamacpp-qwen25-7b` example.
 - **2025-04-10**: Added `xgrammar-transformers-qwen25-0.5b-json` and `llamacpp-guided-decoding-qwen25-0.5b` example.
 - **2025-03-16**: Added `diffuser-flux1-schnell` and `huggingface-bge-m3` example.
@@ -28,6 +30,8 @@ If you have a specific example you would like to see, please open an issue.
 - **2024-12-09**: Initial release of the Float16 Serverless Examples repository.
 
 ## Latest Examples
+- **2025-05-26**: Added [vllm-offline-inference-typhoon-ocr-7b](./official/spot/vllm-offline-inference-typhoon-ocr-7b/) example.
+- **2025-04-29**: Added [fastapi-streaming-transformers-qwen3-8b](./official/deploy/fastapi-streaming-transformers-qwen3-8b/) example.
 - **2025-04-11**: Added [fastapi-streaming-llamacpp-qwen25-7b](./official/deploy/fastapi-streaming-llamacpp-qwen25-7b/) example.
 - **2025-04-10**: Added [Llamacpp-guided-decoding-qwen25-0.5b](./official/run/llamacpp-guided-decoding-qwen25-0.5b/) example.
 - **2025-04-10**: Added [Xgrammar-transformers-qwen25-0.5b-json](./official/run/xgrammar-transformers-qwen25-0.5b-json/) example.
