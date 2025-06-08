@@ -20,6 +20,7 @@ If you have a specific example you would like to see, please open an issue.
 - [Contact us](#contact-us)
 
 ## Latest News
+- **2025-06-08**: Added `fastapi-exllamav2-gemma3-12b-ocr` and `fastapi-typhoon-7b-ocr` example.
 - **2025-06-08**: Added `huggingface-medgemma-27b` example.
 - **2025-05-26**: Added `vllm-offline-inference-typhoon-ocr-7b` example.
 - **2025-04-29**: Added `fastapi-streaming-transformers-qwen3-8b` example.
@@ -31,6 +32,8 @@ If you have a specific example you would like to see, please open an issue.
 - **2024-12-09**: Initial release of the Float16 Serverless Examples repository.
 
 ## Latest Examples
+- **2025-06-08**: Added [fastapi-typhoon-7b-ocr](./official/deploy/fastapi-typhoon-7b-ocr/) example.
+- **2025-06-08**: Added [fastapi-exllamav2-gemma3-12b-ocr](./official/deploy/fastapi-exllamav2-gemma3-12b-ocr/) example.
 - **2025-06-08**: Added [huggingface-medgemma-27b](./official/spot/huggingface-medgemma-27b/) example.
 - **2025-05-26**: Added [vllm-offline-inference-typhoon-ocr-7b](./official/spot/vllm-offline-inference-typhoon-ocr-7b/) example.
 - **2025-04-29**: Added [fastapi-streaming-transformers-qwen3-8b](./official/deploy/fastapi-streaming-transformers-qwen3-8b/) example.
