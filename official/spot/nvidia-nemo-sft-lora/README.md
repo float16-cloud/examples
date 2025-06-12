@@ -5,7 +5,7 @@
 ```
 float16 example official/spot/nvidia-nemo-sft-lora
 
-float16 run sft-lora.py
+float16 run sft-lora.py --spot
 
 ```
 
