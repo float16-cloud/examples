@@ -1,9 +1,9 @@
-# fastapi-exllamav2-gemma3-12b-ocr
+# fastapi-exllamav2-gemma3-12b-vision
 
 ## Getting Started
 
 ```
-float16 example official/deploy/fastapi-exllamav2-gemma3-12b-ocr
+float16 example official/deploy/fastapi-exllamav2-gemma3-12b-vision
 
 huggingface-cli download turboderp/gemma-3-12b-it-exl2 --revision 6.0bpw --local-dir ./gemma-3-12b-it-exl2-6bpw
 
@@ -16,7 +16,7 @@ python3 client.py
 
 ## Description
 
-This example demonstrates how to deploy a FastAPI server with a Gemma3 12B model with OCR.
+This example demonstrates how to deploy a FastAPI server with a Gemma3 12B model with Vision and Instruct.
 
 ## Libraries 
 
