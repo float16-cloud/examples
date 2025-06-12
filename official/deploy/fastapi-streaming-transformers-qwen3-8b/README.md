@@ -7,7 +7,7 @@ float16 example official/deploy/fastapi-streaming-transformers-qwen3-8b
 
 huggingface-cli download Qwen/Qwen3-8B --local-dir ./Qwen3-8B/
 
-float16 storage upload -f ./Qwen3-8B -d weight-llm
+float16 storage upload -f ./Qwen3-8B -d model-weight
 
 float16 deploy server.py
 ```

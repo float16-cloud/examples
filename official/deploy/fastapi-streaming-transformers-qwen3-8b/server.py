@@ -11,7 +11,7 @@ import uvicorn
 from typing import Iterator, List, Optional
 
 start_load = time.time()
-model_name = "../Qwen3-8B"
+model_name = "../model-weight/Qwen3-8B"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,

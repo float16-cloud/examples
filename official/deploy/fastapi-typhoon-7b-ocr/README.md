@@ -7,7 +7,7 @@ float16 example official/deploy/fastapi-typhoon-7b-ocr
 
 huggingface-cli download scb10x/typhoon-ocr-7b --local-dir ./typhoon-ocr-7b
 
-float16 storage upload -f ./typhoon-ocr-7b -d weight-llm
+float16 storage upload -f ./typhoon-ocr-7b -d model-weight
 
 float16 deploy server.py
 
