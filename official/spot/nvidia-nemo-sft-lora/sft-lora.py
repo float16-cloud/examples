@@ -1,17 +1,37 @@
+import os
+import time
+import pandas as pd
 import fiddle as fdl
+from datasets import Dataset
 import lightning.pytorch as pl
-
 from nemo import lightning as nl
 from nemo.collections import llm
+from lightning.pytorch.loggers import WandbLogger
 from nemo.collections.llm.recipes.optim.adam import pytorch_adam_with_cosine_annealing
 
+os.environ['WANDB_API_KEY'] = "WANDB_API_KEY"  # Replace with your actual WandB API key
 
-def make_squad_hf_dataset(tokenizer, batch_size, fp8=False):
+def prepare_datasets(parquet_datat_path,tokenizer, batch_size):
     def formatting_prompts_func(example):
+        # Custom formatting function for any template
+        sentiment = None
+        category = example.get('category', None)
+        if str(category) == "0":
+            sentiment = "positive"
+        elif str(category) == "1":
+            sentiment = "natural"
+        elif str(category) == "2":
+            sentiment = "negative"
+
+        if sentiment is None:
+            sentiment = "unknown"
+
         formatted_text = [
-            f"Context: {example['context']} Question: {example['question']} Answer:",
-            f" {example['answers']['text'][0].strip()}",
+            f"Context: {example['texts']} Sentiment:",
+            f" {sentiment}",
         ]
+        # Custom formatting function for any template
+
         context_ids, answer_ids = list(map(tokenizer.text_to_ids, formatted_text))
         if len(context_ids) > 0 and context_ids[0] != tokenizer.bos_id and tokenizer.bos_id is not None:
             context_ids.insert(0, tokenizer.bos_id)
@@ -24,88 +44,97 @@ def make_squad_hf_dataset(tokenizer, batch_size, fp8=False):
             loss_mask=[0] * (len(context_ids) - 1) + [1] * len(answer_ids),
         )
 
-    datamodule = llm.HFDatasetDataModule(
-        "rajpurkar/squad",
-        split="train",
-        micro_batch_size=batch_size,
-        pad_token_id=tokenizer.eos_id or 0,
-        # pad_seq_len_divisible=16 if fp8 else None,  # FP8 training requires seq length to be divisible by 16.
-    )
+    # Use pandas to read the parquet file
+    train_df = pd.read_parquet(parquet_datat_path)
+    columns = train_df.columns.tolist()
+    train_data = train_df.to_dict(orient="list")
+    train_dataset = Dataset.from_dict(train_data)
+    datamodule = llm.HFDatasetDataModule(train_dataset, split="train", micro_batch_size=batch_size, pad_token_id=tokenizer.eos_id or 0)
+
     datamodule.map(
         formatting_prompts_func,
         batched=False,
-        batch_size=2,
-        remove_columns=["id", "title", "context", "question", 'answers'],
+        batch_size=1,
+        remove_columns=columns
     )
+
     return datamodule
 
 
-def make_strategy(strategy, model, devices, num_nodes, adapter_only=False, enable_cpu_offload=False):
-    if strategy == 'auto':
-        return pl.strategies.SingleDeviceStrategy(
-            device='cuda:0',
-            checkpoint_io=model.make_checkpoint_io(adapter_only=adapter_only),
-        )
-    elif strategy == 'ddp':
-        return pl.strategies.DDPStrategy(
-            checkpoint_io=model.make_checkpoint_io(adapter_only=adapter_only),
-        )
-    elif strategy == 'fsdp2':
-        offload_policy = None
-        if enable_cpu_offload:
-            from nemo.lightning.pytorch.strategies.fsdp2_strategy import HAS_CPU_OFFLOAD_POLICY, CPUOffloadPolicy
+def checkpoint_callback(ckpt_folder, save_every_n_train_steps):
+    ckpt = nl.ModelCheckpoint(
+        save_last=True,
+        every_n_train_steps=save_every_n_train_steps,
+        monitor="reduced_train_loss",
+        save_top_k=1,
+        save_on_train_epoch_end=True,
+        save_optim_on_train_end=True,
+    )
 
-            assert HAS_CPU_OFFLOAD_POLICY, "Could not import offload policy"
-            offload_policy = CPUOffloadPolicy()
+    return nl.NeMoLogger(
+        name="nemo2_sft",
+        log_dir=ckpt_folder,
+        use_datetime_version=False,  # must be false if using auto resume
+        ckpt=ckpt,
+        wandb=None,
+    )
 
-        return nl.FSDP2Strategy(
-            data_parallel_size=devices * num_nodes,
-            tensor_parallel_size=1,
-            checkpoint_io=model.make_checkpoint_io(adapter_only=adapter_only),
-            offload_policy=offload_policy,
-        )
-    else:
-        raise NotImplementedError("Encountered unknown strategy")
 
+def make_strategy(model, adapter_only=False):
+    return pl.strategies.SingleDeviceStrategy(device='cuda:0', checkpoint_io=model.make_checkpoint_io(adapter_only=adapter_only))
 
 def main():
-    """Example script to run PEFT with a HF transformers-instantiated model on squad."""
-    BATCH_SIZE = 24
+
+    BATCH_SIZE = 16
+    model_path = "../../models/Qwen2.5-0.5B-Instruct"  # Path to the local model directory
+    data_path = "../../datasets/wisesight_sentiment_train"  # Path to the local dataset directory
+    checkpoint_path = "../../checkpoints"
 
     optimizer = fdl.build(pytorch_adam_with_cosine_annealing(max_lr=10e-5, warmup_steps=50))
-    model_accelerator = None
+    wandb_logger = WandbLogger(log_model="all", project="nemo-sft", name=f"{int(time.time())}-sft-wisesight-sentiment")
 
     model = llm.HFAutoModelForCausalLM(
-        model_name="Qwen/Qwen2.5-0.5B",
-        model_accelerator=model_accelerator,
+        model_name=model_path, # Path to the local model directory
         trust_remote_code=False,
         load_in_4bit=False,
+        device_map='cuda:0',
     )
-    strategy = make_strategy("auto", model, 1, 1, False)
-    train_data = make_squad_hf_dataset(model.tokenizer, BATCH_SIZE, False)
+    strategy = make_strategy(model, False)
+    train_data = prepare_datasets(data_path,model.tokenizer, BATCH_SIZE)
     train_data.global_batch_size = BATCH_SIZE
 
+    resume = nl.AutoResume(
+        resume_if_exists=True,
+        resume_ignore_no_checkpoint=True,
+    )
+    
     llm.api.finetune(
         model=model,
         data=train_data,
         trainer=nl.Trainer(
             devices=1,
             num_nodes=1,
-            max_steps=100,
+            # max_steps=100, # (actual_steps = max_steps * accumulate_grad_batches) or max_epochs
+            max_epochs=1,
             accelerator='gpu',
             strategy=strategy,
-            log_every_n_steps=1,
             limit_val_batches=0.0,
             num_sanity_val_steps=0,
-            accumulate_grad_batches=10,
-            gradient_clip_val=1.0,
-            use_distributed_sampler=False
+            log_every_n_steps=50,
+            accumulate_grad_batches=1,
+            use_distributed_sampler=False,
+            enable_progress_bar=False, # Disable progress bar for cleaner output
+            precision='bf16-mixed',
+            logger=wandb_logger
         ),
         optim=optimizer,
         peft=llm.peft.LoRA(
             target_modules=['*_proj'],
             dim=8,
-        )
+        ),
+        log=checkpoint_callback(checkpoint_path, save_every_n_train_steps=500),
+        resume=resume
     )
 
+print("Starting NeMo SFT application...")
 main()
