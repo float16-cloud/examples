@@ -20,6 +20,7 @@ If you have a specific example you would like to see, please open an issue.
 - [Contact us](#contact-us)
 
 ## Latest News
+- **2025-07-01**: Added `E2E-LLM-Bootcamp-Typhoon-1` example.
 - **2025-06-12**: Added `nvidia-nemo-sft-lora` example.
 - **2025-06-12**: Added `fastapi-exllamav2-gemma3-12b-vision` example.
 - **2025-06-08**: Added `fastapi-exllamav2-gemma3-12b-ocr` and `fastapi-typhoon-7b-ocr` example.
