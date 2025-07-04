@@ -13,7 +13,7 @@ model = PeftModel.from_pretrained(model, lora_adapter_path)
 model = model.merge_and_unload()
 
 # Define a directory to save the merged model and tokenizer
-save_directory = "../merged_model_hf/"
+save_directory = "../../merged_model_hf/"
 
 # Create the directory if it doesn't exist
 os.makedirs(save_directory, exist_ok=True)
