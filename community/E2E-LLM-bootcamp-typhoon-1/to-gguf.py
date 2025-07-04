@@ -5864,8 +5864,8 @@ def get_model_architecture(dir_model: Path, model_type: ModelType, hparams: Any 
 
 
 def main() -> None:
-    dir_model = Path('../merged_model_hf')
-    fname_out = Path('../gguf-model/my-typhoon2.gguf')
+    dir_model = Path('../../merged_model_hf')
+    fname_out = Path('../../gguf-model/my-typhoon2.gguf')
     output_type = gguf.LlamaFileType.MOSTLY_Q8_0
     
     if not fname_out.parent.exists():
