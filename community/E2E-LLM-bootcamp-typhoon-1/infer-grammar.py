@@ -1,7 +1,7 @@
 from llama_cpp.llama import Llama, LlamaGrammar
 
 grammar = """root ::= ("negative" | "positive" | "neutral") """
-model_name = "../gguf-model/my-typhoon2.gguf"
+model_name = "../../gguf-model/my-typhoon2.gguf"
 
 input_sent = "อากาศไม่ดีเลยวันนี้"
 user_input = f"Analyze the sentiment of the following text:\nContext: {input_sent}\nSentiment:"
