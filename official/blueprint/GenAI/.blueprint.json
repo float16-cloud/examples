@@ -55,5 +55,9 @@
             "path" : "datamodel",
             "fileName" : "request_message.py"
         }
-    ]
+    ],
+    "deploymentFile" : {
+        "path" : "",
+        "fileName" : "server.py"
+    }
 }
