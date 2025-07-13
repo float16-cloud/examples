@@ -1,0 +1,10 @@
+{
+    "version" : 1,
+    "experimentBluePrint" : [],
+    "productionBluePrint" : [
+        {        
+            "bluePrintName" : "GenAI",
+            "bluePrintPath" : "official/blueprint/GenAI"
+        }
+    ]
+}

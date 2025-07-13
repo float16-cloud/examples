@@ -65,7 +65,6 @@ Alternatively, you can go to Playground and copy code from `infer.py` and run it
 
 ### Morning Session
 
-- [train.py](./train.py)
 - [infer.py](./infer.py)
 
 ### Afternoon Session

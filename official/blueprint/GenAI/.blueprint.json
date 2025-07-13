@@ -1,0 +1,63 @@
+{
+    "version" : 1,
+    "readme" : [
+        {
+            "path" : "",
+            "audience" : "user",
+            "language" : "en",
+            "fileName" : "README.md"
+        },
+        {
+            "path" : "",
+            "audience" : "developer",
+            "language" : "en",
+            "fileName" : "DEV_README.md"
+        },
+        {
+            "path" : "",
+            "audience" : "user",
+            "language" : "th",
+            "fileName" : "TH_README.md"
+        },
+        {
+            "path" : "",
+            "audience" : "developer",
+            "language" : "th",
+            "fileName" : "TH_DEV_README.md"
+        }
+    ],
+    "fileList" : [
+        {
+            "path" : "",
+            "fileName" : "server.py"
+        },
+        {
+            "path" : "function",
+            "fileName" : "preprocess.py"
+        },
+        {
+            "path" : "function",
+            "fileName" : "process.py"
+        },
+        {
+            "path" : "function",
+            "fileName" : "postprocess.py"
+        },
+        {
+            "path" : "function",
+            "fileName" : "inference_lmfe_wrapper.py"
+        },
+        {
+            "path" : "datamodel",
+            "fileName" : "json_response.py"
+        },
+        {
+            "path" : "datamodel",
+            "fileName" : "request_message.py"
+        }
+    ],
+    "deploymentFile" : {
+        "path" : "",
+        "fileName" : "server.py"
+    }
+}
