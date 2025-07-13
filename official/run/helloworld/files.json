@@ -1,5 +1,8 @@
 {
   "fileList": [
-    {"fileName": "app.py"}
+    {
+      "fileName": "app.py",
+      "readme" : "app.md"
+    }
   ]
 }
