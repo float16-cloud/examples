@@ -15,6 +15,8 @@ Participants will learn how to set up their environment, train models, and deplo
 
 ### Morning Session
 
+Get WANDB API Key from [WANDB](https://wandb.ai/).
+
 - [train.py](./train.py) 
 - [infer.py](./infer.py)
 

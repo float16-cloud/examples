@@ -20,6 +20,7 @@ If you have a specific example you would like to see, please open an issue.
 - [Contact us](#contact-us)
 
 ## Latest News
+- **2025-07-13**: Added `blueprint` example.
 - **2025-07-01**: Added `E2E-LLM-Bootcamp-Typhoon-1` example.
 - **2025-06-12**: Added `nvidia-nemo-sft-lora` example.
 - **2025-06-12**: Added `fastapi-exllamav2-gemma3-12b-vision` example.
@@ -35,6 +36,7 @@ If you have a specific example you would like to see, please open an issue.
 - **2024-12-09**: Initial release of the Float16 Serverless Examples repository.
 
 ## Latest Examples
+- **2025-07-13**: Added [blueprint](./official/spot/blueprint/) example.
 - **2025-06-12**: Added [nvidia-nemo-sft-lora](./official/spot/nvidia-nemo-sft-lora/) example.
 - **2025-06-12**: Added [fastapi-exllamav2-gemma3-12b-vision](./official/deploy/fastapi-exllamav2-gemma3-12b-vision/) example.
 - **2025-06-08**: Added [fastapi-typhoon-7b-ocr](./official/deploy/fastapi-typhoon-7b-ocr/) example.
