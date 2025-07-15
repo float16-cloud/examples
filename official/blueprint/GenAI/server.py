@@ -1,5 +1,6 @@
 import json
 import os
+import traceback
 import uvicorn
 from llama_cpp.llama import Llama
 from fastapi import FastAPI, Request
@@ -83,7 +84,7 @@ async def _chat_completions(request: Request):
     try:
         if stream and tools:
             output = completion(
-                llm=inference_engine,
+                inference_engine=inference_engine,
                 chat_template=chat_template,
                 prompt=prompt,
                 stream=stream,
@@ -95,7 +96,7 @@ async def _chat_completions(request: Request):
             )
         elif stream:
             output = completion(
-                llm=inference_engine,
+                inference_engine=inference_engine,
                 chat_template=chat_template,
                 prompt=prompt,
                 stream=stream,
@@ -125,6 +126,8 @@ async def _chat_completions(request: Request):
                 status_code=200,
             )
     except Exception as e:
+        traceback.print_exc()
+        print(f"Error during completion: {e}")
         return {"error": str(e)}
 
 
