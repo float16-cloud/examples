@@ -1,5 +1,8 @@
 {
     "version" : 1,
+    "information": {
+        "type": "LLM"
+    },
     "readme" : [
         {
             "path" : "",
