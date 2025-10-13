@@ -5,6 +5,10 @@
         {        
             "bluePrintName" : "GenAI",
             "bluePrintPath" : "official/blueprint/GenAI"
+        },
+        {        
+            "bluePrintName" : "GenAI_2",
+            "bluePrintPath" : "official/blueprint/GenAI-2"
         }
     ]
 }
