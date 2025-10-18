@@ -409,8 +409,7 @@ def format_typhoon_gemma(messages, tools=None, reasoning_effort=None) -> str:
         "conversation": messages,
         "tokenize": False,
         "add_generation_prompt": True,
-        "enable_thinking": enable_thinking,
-        "tools": tools if tools is not None else [],
+        "enable_thinking": enable_thinking
     }
 
     text = tokenizer.apply_chat_template(**kwargs)
