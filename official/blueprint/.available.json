@@ -22,13 +22,6 @@
             "category": "Text",
             "description": "Thai-English bilingual model based on Gemma architecture, specialized for Southeast Asian languages.",
             "tags": ["Thai", "Bilingual", "SEA"]
-          },
-          {
-            "bluePrintName": "Typhoon-OCR",
-            "bluePrintPath": "official/blueprint/GenAI",
-            "category": "OCR",
-            "description": "Optical character recognition model supporting Thai and English text extraction from images and documents.",
-            "tags": ["OCR", "Vision", "Document AI"]
           }
     ]
 }
