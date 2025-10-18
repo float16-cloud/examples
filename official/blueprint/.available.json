@@ -2,9 +2,33 @@
     "version" : 1,
     "experimentBluePrint" : [],
     "productionBluePrint" : [
-        {        
-            "bluePrintName" : "GenAI",
-            "bluePrintPath" : "official/blueprint/GenAI"
-        }
+        {
+            "bluePrintName": "Qwen3 30B A3B",
+            "bluePrintPath": "official/blueprint/GenAI",
+            "category": "Text",
+            "description": "Advanced text generation model with 30B parameters, optimized for natural language understanding and generation tasks.",
+            "tags": ["LLM", "Text Generation", "NLU"]
+          },
+          {
+            "bluePrintName": "Gemma3-27b",
+            "bluePrintPath": "official/blueprint/GenAI",
+            "category": "Text",
+            "description": "High-performance text model for various NLP tasks including summarization, translation, and question answering.",
+            "tags": ["LLM", "NLP", "Multilingual"]
+          },
+          {
+            "bluePrintName": "Typhoon2.1-gemma3-12b",
+            "bluePrintPath": "official/blueprint/GenAI",
+            "category": "Text",
+            "description": "Thai-English bilingual model based on Gemma architecture, specialized for Southeast Asian languages.",
+            "tags": ["Thai", "Bilingual", "SEA"]
+          },
+          {
+            "bluePrintName": "Typhoon-OCR",
+            "bluePrintPath": "official/blueprint/GenAI",
+            "category": "OCR",
+            "description": "Optical character recognition model supporting Thai and English text extraction from images and documents.",
+            "tags": ["OCR", "Vision", "Document AI"]
+          }
     ]
 }
