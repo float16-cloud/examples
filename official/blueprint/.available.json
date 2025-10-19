@@ -21,7 +21,7 @@
             "bluePrintPath": "official/blueprint/GenAI",
             "category": "Text",
             "description": "Thai-English bilingual model based on Gemma architecture, specialized for Southeast Asian languages.",
-            "tags": ["Thai", "Bilingual", "SEA"]
+            "tags": ["LLM","Thai", "Bilingual"]
           },
           {
             "bluePrintName": "Thai Document OCR",
