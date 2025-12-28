@@ -29,6 +29,13 @@
             "category": "OCR",
             "description": "Optical character recognition model supporting Thai and English text extraction from images and documents.",
             "tags": ["OCR", "Vision", "Document AI"]
-          }
+          },
+              {
+        "bluePrintName": "Parabricks fq2bam",
+        "bluePrintPath": "official/blueprint/parabricks-fq2bam",
+        "category": "Parabricks",
+        "description": "GPU-accelerated FASTQ to BAM alignment using NVIDIA Parabricks fq2bam",
+        "tags": ["Genomics", "Alignment", "GPU"]
+      }
     ]
 }
